@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment, useEffect, useState } from "react";
 
 function App() {
+  const [toDos, setToDos] = useState([]);
+  useEffect(() => {
+    fetch("https://gorest.co.in/public-api/users/1572/todos")
+      .then((res) => res.json())
+      .then((res) => setToDos(res.data));
+  }, []);
+
+if(toDos.length===0) return <div>Loading...</div>
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      {toDos.map((item) => (
+        <div>{item.title}</div>
+      ))}
+    </Fragment>
   );
 }
 
