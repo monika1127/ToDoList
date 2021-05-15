@@ -1,23 +1,24 @@
 import { Fragment, useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import Navbar from './Components/Navbar'
+import ToDoList from './Components/ToDoList'
+import {todoListState} from './recoil/recoil'
+
 import './styles/application.css'
 
 function App() {
-  const [toDos, setToDos] = useState([]);
-  useEffect(() => {
-    fetch("https://gorest.co.in/public-api/users/1572/todos")
-      .then((res) => res.json())
-      .then((res) => setToDos(res.data));
-  }, []);
+  const [toDoList, setToDoList] = useRecoilState(todoListState)
 
-if(toDos.length===0) return <div>Loading...</div>
+  useEffect(() => {
+    fetch("https://gorest.co.in/public-api/users/1280/todos")
+      .then((res) => res.json())
+      .then((res) => setToDoList(res.data));
+  }, []);
 
   return (
     <Fragment>
       <Navbar />
-      {toDos.map((item) => (
-        <div>{item.title}</div>
-      ))}
+      <ToDoList />
     </Fragment>
   );
 }
