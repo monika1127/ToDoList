@@ -4,15 +4,16 @@ import { todoListState } from "../recoil/recoil";
 import { ReactComponent as Bin } from "../assets/bin2.svg";
 import { ReactComponent as Checkmark } from "../assets/checkmark.svg";
 
-
-
 const ToDoItem = ({ item }) => {
   const [todoList, setTodoList] = useRecoilState(todoListState);
   const index = todoList.findIndex((listItem) => listItem === item);
 
   const toggleItemCompletion = () => {
     const newValue = {completed: !item.completed}
-    const newList =  [...todoList.slice(0, index), {...item, ...newValue}, ...todoList.slice(index + 1)]
+    const newList = replaceItemAtIndex(todoList, index, {
+      ...item,
+      ...newValue
+    });
 
     fetch(`https://gorest.co.in/public-api/todos/${item.id}`, {
       method: 'PATCH',
@@ -46,6 +47,11 @@ const ToDoItem = ({ item }) => {
 
   );
 };
+
+function replaceItemAtIndex(arr, index, newValue) {
+  return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
+}
+
 
 // function removeItemAtIndex(arr, index) {
 //   return [...arr.slice(0, index), ...arr.slice(index + 1)];

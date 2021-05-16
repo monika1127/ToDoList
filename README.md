@@ -5,9 +5,9 @@
 - list item
 - functions - check + hide / unhide
 - functions - counters
-- functions - delete
 - add new task
 - search for new task
+- functions - delete
 
 - USER DETAILS
 - TODOS DETAILS

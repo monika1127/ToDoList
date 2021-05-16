@@ -1,8 +1,10 @@
 import { Fragment, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
+import {todoListState} from './recoil/recoil'
+
 import Navbar from './Components/Navbar'
 import ToDoList from './Components/ToDoList'
-import {todoListState} from './recoil/recoil'
+import AddToDoItem from './Components/AddToDoItem'
 
 import './styles/application.css'
 
@@ -25,6 +27,7 @@ function App() {
   return (
     <Fragment>
       <Navbar />
+      <AddToDoItem />
       {isLoading ? <div>Loading</div> : <ToDoList />}
     </Fragment>
   );

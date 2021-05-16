@@ -87,4 +87,41 @@ body {
 .todo-item__delete-icon:hover {
   color: #3333ee;
 }
+
+.new-item__container {
+  max-width: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px auto;
+  padding: 8px;
+}
+
+.new-item__container input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 28px;
+  border: 2px solid #111199;
+}
+
+.btn {
+  cursor: pointer;
+  display: block;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  width: 60px;
+}
+
+.btn-primary {
+  background-color: #111199;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #3333ee;
+}
 /*# sourceMappingURL=application.css.map */
