@@ -8,17 +8,24 @@ import './styles/application.css'
 
 function App() {
   const [toDoList, setToDoList] = useRecoilState(todoListState)
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch("https://gorest.co.in/public-api/users/1280/todos")
       .then((res) => res.json())
-      .then((res) => setToDoList(res.data));
+      .then((res) => {
+        setLoading(false)
+        setToDoList(res.data)})
+      .catch(err=>{
+        console.log(err)
+        setLoading(false)
+      })
   }, []);
 
   return (
     <Fragment>
       <Navbar />
-      <ToDoList />
+      {isLoading ? <div>Loading</div> : <ToDoList />}
     </Fragment>
   );
 }
