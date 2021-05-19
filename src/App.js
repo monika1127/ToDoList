@@ -5,6 +5,7 @@ import {todoListState} from './recoil/recoil'
 import Navbar from './Components/Navbar'
 import ToDoList from './Components/ToDoList'
 import AddToDoItem from './Components/AddToDoItem'
+import SearchToDoItem from "./Components/SearchToDoItem";
 
 import './styles/application.css'
 
@@ -28,6 +29,7 @@ function App() {
     <Fragment>
       <Navbar />
       <AddToDoItem />
+      <SearchToDoItem />
       {isLoading ? <div>Loading</div> : <ToDoList />}
     </Fragment>
   );

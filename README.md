@@ -6,11 +6,8 @@
 - functions - check + hide / unhide
 - functions - counters
 - add new task
+
 - search for new task
 - functions - delete
-
-- USER DETAILS
-- TODOS DETAILS
-
 - STYLING
 - SPINNERS

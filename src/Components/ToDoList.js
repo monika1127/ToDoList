@@ -1,10 +1,10 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { todoListState } from "../recoil/recoil";
+import { filteredToDoList } from "../recoil/recoil";
 import ToDoItem from './ToDoItem'
 
 const ToDoList = () => {
-  const toDoList = useRecoilValue(todoListState);
+  const toDoList = useRecoilValue(filteredToDoList);
 
   return (
     <div>

@@ -78,6 +78,7 @@ body {
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
   padding: 0 8px;
+  text-overflow: ellipsis;
 }
 
 .todo-item__delete-icon {

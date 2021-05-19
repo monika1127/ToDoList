@@ -5,6 +5,22 @@ export const todoListState = atom({
     default: [],
   });
 
+ export const searchedState = atom({
+    key: 'todoListSearchedState',
+    default: '',
+  });
+
+  export const filteredToDoList = selector({
+  key: 'filteredToDos',
+  get: ({get})=> {
+    const list = get(todoListState)
+    const searchedValue = get(searchedState)
+
+    if(searchedValue) return list.filter(i => i.title.includes(searchedValue))
+    else return list
+  }
+})
+
 export const todoListStatsState = selector({
   key: 'todoListStatsState',
   get: ({get}) => {
