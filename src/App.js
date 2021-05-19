@@ -7,6 +7,7 @@ import Navbar from "./Components/Navbar";
 import ToDoList from "./Components/ToDoList";
 import AddToDoItem from "./Components/AddToDoItem";
 import SearchToDoItem from "./Components/SearchToDoItem";
+import BounceLoader from "react-spinners/BounceLoader"
 
 import "./styles/application.css";
 
@@ -36,7 +37,7 @@ function App() {
           <Route path="/search" component={SearchToDoItem} />
           <Route path="/add-todo" component={AddToDoItem} />
         </Switch>
-      {isLoading ? <div>Loading</div> : <ToDoList />}
+      {isLoading ? <BounceLoader /> : <ToDoList />}
       </Router>
     </Fragment>
   );
