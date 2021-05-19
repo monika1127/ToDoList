@@ -9,32 +9,37 @@ const ToDoItem = ({ item }) => {
   const index = todoList.findIndex((listItem) => listItem === item);
 
   const toggleItemCompletion = () => {
-    const newValue = {completed: !item.completed}
+    const newValue = { completed: !item.completed };
     const newList = replaceItemAtIndex(todoList, index, {
       ...item,
-      ...newValue
+      ...newValue,
     });
 
     fetch(`https://gorest.co.in/public-api/todos/${item.id}`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.REACT_APP_API_TOKEN}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
       },
-      body: JSON.stringify(newValue)
+      body: JSON.stringify(newValue),
     })
-    .then(res => setTodoList(newList))
-    .catch(err=>console.log(err))
+      .then((res) => setTodoList(newList))
+      .catch((err) => console.log(err));
   };
 
   const deleteItem = () => {
-    console.log("delete");
-    // const newList = removeItemAtIndex(todoList, index);
-    // setTodoList(newList);
+    const updatedState = todoList.filter((i) => i.id !== item.id);
+    fetch(`https://gorest.co.in/public-api/todos/${item.id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
+      },
+    })
+      .then((res) => setTodoList(updatedState))
+      .catch((err) => console.log(err));
   };
 
   return (
-    !item.completed &&
     <div className="todo-item__container ">
       <div className="todo-item__checkbox" onClick={toggleItemCompletion}>
         <Checkmark width={14} height={14} />
@@ -44,17 +49,11 @@ const ToDoItem = ({ item }) => {
         <Bin width={16} height={16} />
       </div>
     </div>
-
   );
 };
 
 function replaceItemAtIndex(arr, index, newValue) {
   return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
 }
-
-
-// function removeItemAtIndex(arr, index) {
-//   return [...arr.slice(0, index), ...arr.slice(index + 1)];
-// }
 
 export default ToDoItem;
