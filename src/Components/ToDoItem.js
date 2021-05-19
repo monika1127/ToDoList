@@ -1,8 +1,9 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { todoListState } from "../recoil/recoil";
-import { ReactComponent as Bin } from "../assets/bin2.svg";
+import { ReactComponent as BinIcon } from "../assets/bin2.svg";
 import { ReactComponent as Checkmark } from "../assets/checkmark.svg";
+import { Flex, Box, Text, Card, IconButton } from "@theme-ui/components";
 
 const ToDoItem = ({ item }) => {
   const [todoList, setTodoList] = useRecoilState(todoListState);
@@ -40,15 +41,23 @@ const ToDoItem = ({ item }) => {
   };
 
   return (
-    <div className="todo-item__container ">
-      <div className="todo-item__checkbox" onClick={toggleItemCompletion}>
-        <Checkmark width={14} height={14} />
-      </div>
-      <div className="todo-item__description">{item.title}</div>
-      <div className="todo-item__delete-icon" onClick={() => deleteItem()}>
-        <Bin width={16} height={16} />
-      </div>
-    </div>
+    <Card variant={item.completed ? "muted" : "primary"}>
+      <Box>
+        <IconButton
+          variant={item.completed ? "muted" : "primaryEmpty"}
+          onClick={toggleItemCompletion}
+        >
+          <Checkmark width={14} height={14} />
+        </IconButton>
+        <Text>{item.title}</Text>
+      </Box>
+      <IconButton
+        variant={item.completed ? "muted" : "primary"}
+        onClick={() => deleteItem()}
+      >
+        <BinIcon width={16} height={16} />
+      </IconButton>
+    </Card>
   );
 };
 

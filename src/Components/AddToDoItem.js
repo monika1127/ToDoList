@@ -1,7 +1,8 @@
+import { Button, Flex, Input } from "@theme-ui/components";
 import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { todoListState } from "../recoil/recoil";
-import Button from "./Button";
+
 
 const AddToDoItem = () => {
   const [inputValue, setInputValue] = useState("");
@@ -29,15 +30,15 @@ const AddToDoItem = () => {
   };
 
   return (
-    <div className="new-item__container">
-      <input
+    <Flex >
+      <Input
         type="text"
-        placeholder="add new task"
+        placeholder="Enter the new task title"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <Button variant="primary" type="button" onClick={addItem} name="add"/>
-    </div>
+      <Button variant='primary' onClick={addItem}>Add new task</Button>
+    </Flex>
   );
 };
 

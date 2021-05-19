@@ -13,6 +13,7 @@
     "react-scripts": "4.0.3",
     "react-spinners": "^0.10.6",
     "recoil": "^0.2.0",
+    "theme-ui": "^0.8.4",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

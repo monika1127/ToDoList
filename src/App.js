@@ -2,15 +2,13 @@ import { Fragment, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { todoListState } from "./recoil/recoil";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-
+import {ThemeProvider} from 'theme-ui'
+import theme from './theme'
 import Navbar from "./Components/Navbar";
 import ToDoList from "./Components/ToDoList";
 import AddToDoItem from "./Components/AddToDoItem";
 import SearchToDoItem from "./Components/SearchToDoItem";
 import BounceLoader from "react-spinners/BounceLoader"
-
-import "./styles/application.css";
-
 
 function App() {
   const [toDoList, setToDoList] = useRecoilState(todoListState);
@@ -30,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <Fragment>
+    <ThemeProvider theme={theme}>
       <Router>
       <Navbar />
         <Switch>
@@ -39,7 +37,7 @@ function App() {
         </Switch>
       {isLoading ? <BounceLoader /> : <ToDoList />}
       </Router>
-    </Fragment>
+    </ThemeProvider>
   );
 }
 

@@ -1,3 +1,4 @@
+import { Container, Text } from "@theme-ui/components";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { filteredToDoList } from "../recoil/recoil";
@@ -7,11 +8,12 @@ const ToDoList = () => {
   const toDoList = useRecoilValue(filteredToDoList);
 
   return (
-    <div>
+    <Container>
+      <Text variant='header'>Tasks:</Text>
       {toDoList.map((toDoItem) => (
         <ToDoItem key={toDoItem.id} item={toDoItem}/>
       ))}
-    </div>
+    </Container>
   );
 };
 
