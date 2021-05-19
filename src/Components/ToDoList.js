@@ -1,17 +1,23 @@
-import { Container, Text } from "@theme-ui/components";
+import { Container, Text, Flex } from "@theme-ui/components";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { filteredToDoList } from "../recoil/recoil";
-import ToDoItem from './ToDoItem'
-
+import ToDoItem from "./ToDoItem";
+import Statistics from "./Statistics";
 const ToDoList = () => {
   const toDoList = useRecoilValue(filteredToDoList);
 
   return (
     <Container>
-      <Text variant='header'>Tasks:</Text>
+      <Flex sx={{
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}>
+        <Text variant="header">Tasks:</Text>
+        <Statistics />
+      </Flex>
       {toDoList.map((toDoItem) => (
-        <ToDoItem key={toDoItem.id} item={toDoItem}/>
+        <ToDoItem key={toDoItem.id} item={toDoItem} />
       ))}
     </Container>
   );

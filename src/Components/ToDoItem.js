@@ -42,15 +42,17 @@ const ToDoItem = ({ item }) => {
 
   return (
     <Card variant={item.completed ? "muted" : "primary"}>
-      <Box>
+      <Flex>
         <IconButton
           variant={item.completed ? "muted" : "primaryEmpty"}
           onClick={toggleItemCompletion}
         >
           <Checkmark width={14} height={14} />
         </IconButton>
-        <Text>{item.title}</Text>
-      </Box>
+        <Box>
+          <Text>{item.title}</Text>
+        </Box>
+      </Flex>
       <IconButton
         variant={item.completed ? "muted" : "primary"}
         onClick={() => deleteItem()}

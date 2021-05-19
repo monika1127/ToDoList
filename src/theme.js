@@ -19,28 +19,26 @@ export default {
   colors: {
     text: "#000",
     background: "#fff",
-    primary: "#07c",
-    secondary: "#30c",
+    primary: "#2ea8cc",
+    secondary: "#03c29f",
+    secondaryLight: "#80ddca",
     muted: "#f6f6f6",
   },
   cards: {
     primary: {
-      padding: 2,
-      margin: 4,
       borderBottom: "1px solid",
       display: "flex",
       justifyContent: "space-between",
       borderColor: "primary",
     },
     muted: {
-      padding: 2,
-      margin: 4,
       borderBottom: "1px solid",
       display: "flex",
       justifyContent: "space-between",
       borderColor: "muted",
     },
   },
+
   buttons: {
     primary: {
       color: "white",
@@ -52,23 +50,36 @@ export default {
       cursor: "pointer",
       bg: "muted",
     },
-    primaryEmpty:{
-        color: "white",
-        cursor: "pointer",
-        bg: "white",
-        border: '2px solid',
-        borderColor: "primary",
-    }
+    primaryEmpty: {
+      color: "white",
+      cursor: "pointer",
+      bg: "white",
+      border: "2px solid",
+      borderColor: "primary",
+    },
+    nav: {
+      color: "white",
+      cursor: "pointer",
+      bg: "secondaryLight",
+      padding: 2,
+      width: "48px",
+      height: "48px",
+      display: "flex",
+      m: 2,
+    },
   },
 
-  text:{
-    default: {
-      marginLeft: 3
-    },
-    header:{
-      fontSize: 5,
+  text: {
+    header: {
+      fontSize: 4,
       fontWeight: "bold",
-      color: 'primary'
-    }
-  }
+      color: "primary",
+    },
+    nav: {
+      fontSize: 4,
+      fontWeight: "bold",
+      color: "white",
+    },
+
+  },
 };
