@@ -12,7 +12,7 @@ export const searchedState = atom({
 
 export const filterState = atom({
   key: "filterState",
-  default: "not completed",
+  default: true,
 });
 
 export const filteredToDoList = selector({
@@ -22,7 +22,7 @@ export const filteredToDoList = selector({
     const searchedValue = get(searchedState);
     const filter = get(filterState)
 
-    if(filter=="not completed"){
+    if(filter){
       return list.filter((i) => i.title.includes(searchedValue) && !i.completed);
     } else return list.filter((i) => i.title.includes(searchedValue))
 
