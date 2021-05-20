@@ -1,9 +1,9 @@
 import React from "react";
+import { Flex, Box, Text, Card, IconButton } from "@theme-ui/components";
 import { useRecoilState } from "recoil";
 import { todoListState } from "../recoil/recoil";
 import { ReactComponent as BinIcon } from "../assets/bin2.svg";
 import { ReactComponent as Checkmark } from "../assets/checkmark.svg";
-import { Flex, Box, Text, Card, IconButton } from "@theme-ui/components";
 
 const ToDoItem = ({ item }) => {
   const [todoList, setTodoList] = useRecoilState(todoListState);
@@ -42,14 +42,14 @@ const ToDoItem = ({ item }) => {
 
   return (
     <Card variant={item.completed ? "muted" : "primary"}>
-      <Flex sx={{alignItems: "center", flex:"1 1 0"}}>
+      <Flex sx={{ alignItems: "center", flex: "1 1 0" }}>
         <IconButton
           variant={item.completed ? "checkMuted" : "checkActive"}
           onClick={toggleItemCompletion}
         >
           <Checkmark width={14} height={14} />
         </IconButton>
-        <Box sx={{px:2, flex:"1 1 0"}}>
+        <Box sx={{ px: 2, flex: "1 1 0" }}>
           <Text>{item.title}</Text>
         </Box>
       </Flex>

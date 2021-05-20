@@ -31,27 +31,21 @@ const AddToDoItem = () => {
 
   return (
     <Container variant="body">
-      <Flex sx={{alignItems: "center", color: 'primary'}}>
+      <Flex sx={{ alignItems: "center", color: "primary" }}>
         <PencilIcon width={20} height={20} />
-        <Text variant="header" sx={{px: 2}} >Add new task:</Text>
+        <Text variant="header" sx={{ px: 2 }}>
+          Add new task:
+        </Text>
       </Flex>
       <Flex>
         <Input
+          variant="customInput"
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          sx={{
-            border: "1px solid",
-            borderBottom: "3px solid",
-            borderColor: "primary",
-            outline: "none",
-            '&:focus': {
-              borderColor: "secondary",
-            }
-          }}
         />
         <Button variant="primary" onClick={addItem}>
-          Add
+          {"Add"}
         </Button>
       </Flex>
     </Container>
