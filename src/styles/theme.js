@@ -30,6 +30,7 @@ export default {
     secondaryLight: "#80ddca",
     muted: "#f6f6f6",
     danger: "#C95977",
+    highlited: "#89c4d9",
   },
 
   cards,
