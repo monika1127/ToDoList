@@ -2,56 +2,26 @@ import React from "react";
 import { todoListStatsState } from "../recoil/recoil";
 import { useRecoilValue } from "recoil";
 
-import { Box, Flex, Text } from "@theme-ui/components";
+import { Box, Flex, Text, Container } from "@theme-ui/components";
 
 const Navbar = () => {
   const { totalCompletedNum, totalUncompletedNum } =
     useRecoilValue(todoListStatsState);
 
   return (
-    <Flex>
-      <Flex
-      m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Flex
-          bg="secondaryLight"
-          sx={{
-            width: "36px",
-            height: "36px",
-            borderRadius: "50%",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text >{totalCompletedNum}</Text>
-        </Flex>
-        <Text m={2}>DONE</Text>
-      </Flex>
-      <Flex
-            m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Flex
-          bg="secondaryLight"
-          sx={{
-            width: "36px",
-            height: "36px",
-            borderRadius: "50%",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text>{totalUncompletedNum}</Text>
-        </Flex>
-          <Text m={2}>TO BE DONE</Text>
-      </Flex>
+    <Flex sx={{justifyContent: "flex-end", width: "auto"}}>
+     <Container variant="centered" sx={{width:"auto", m:0, p:2}}>
+        <Container variant="circle">
+          <Box sx={{fontWeight:"bold", color:"white", fontSize:3}}>{totalCompletedNum}</Box>
+        </Container>
+        <Text sx={{flex: "1", px:1}}>DONE</Text>
+      </Container>
+      <Container variant="centered" sx={{width:"auto", m:0, p:2}} >
+        <Container variant="circle">
+          <Box sx={{fontWeight:"bold", color:"white", fontSize:3}}>{totalUncompletedNum}</Box>
+        </Container>
+        <Text sx={{flex: "1",  px:1}}>TO BE DONE</Text>
+      </Container>
     </Flex>
   );
 };

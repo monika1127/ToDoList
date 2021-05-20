@@ -1,5 +1,5 @@
-import { Button, Flex, Input, Text } from "@theme-ui/components";
-import React, { Fragment, useState } from "react";
+import { Button, Flex, Input, Text, Container } from "@theme-ui/components";
+import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { todoListState } from "../recoil/recoil";
 import { ReactComponent as PencilIcon } from "../assets/pencil.svg";
@@ -30,21 +30,31 @@ const AddToDoItem = () => {
   };
 
   return (
-    <Fragment>
-      <PencilIcon width={24} height={24} />
-      <Text variant="header">Add new to do item:</Text>
+    <Container variant="body">
+      <Flex sx={{alignItems: "center", color: 'primary'}}>
+        <PencilIcon width={20} height={20} />
+        <Text variant="header" sx={{px: 2}} >Add new task:</Text>
+      </Flex>
       <Flex>
         <Input
           type="text"
-          placeholder="Enter the new task title"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
+          sx={{
+            border: "1px solid",
+            borderBottom: "3px solid",
+            borderColor: "primary",
+            outline: "none",
+            '&:focus': {
+              borderColor: "secondary",
+            }
+          }}
         />
         <Button variant="primary" onClick={addItem}>
-          Add new task
+          Add
         </Button>
       </Flex>
-    </Fragment>
+    </Container>
   );
 };
 

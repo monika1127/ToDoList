@@ -42,22 +42,22 @@ const ToDoItem = ({ item }) => {
 
   return (
     <Card variant={item.completed ? "muted" : "primary"}>
-      <Flex>
+      <Flex sx={{alignItems: "center", flex:"1 1 0"}}>
         <IconButton
-          variant={item.completed ? "muted" : "primaryEmpty"}
+          variant={item.completed ? "checkMuted" : "checkActive"}
           onClick={toggleItemCompletion}
         >
           <Checkmark width={14} height={14} />
         </IconButton>
-        <Box>
+        <Box sx={{px:2, flex:"1 1 0"}}>
           <Text>{item.title}</Text>
         </Box>
       </Flex>
       <IconButton
-        variant={item.completed ? "muted" : "primary"}
+        variant={item.completed ? "deleteMuted" : "deleteActive"}
         onClick={() => deleteItem()}
       >
-        <BinIcon width={16} height={16} />
+        <BinIcon width={14} height={14} />
       </IconButton>
     </Card>
   );

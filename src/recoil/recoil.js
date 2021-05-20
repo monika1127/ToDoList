@@ -20,12 +20,22 @@ export const filteredToDoList = selector({
   get: ({ get }) => {
     const list = get(todoListState);
     const searchedValue = get(searchedState);
-    const filter = get(filterState)
+    const filter = get(filterState);
 
-    if(filter){
-      return list.filter((i) => i.title.includes(searchedValue) && !i.completed);
-    } else return list.filter((i) => i.title.includes(searchedValue))
-
+    if (filter) {
+      return list
+        .filter((i) => i.title.includes(searchedValue) && !i.completed)
+        .sort((a, b) => {
+          if (!a.completed && b.completed) return -1;
+          else return 0;
+        });
+    } else
+      return list
+        .filter((i) => i.title.includes(searchedValue))
+        .sort((a, b) => {
+          if (!a.completed && b.completed) return -1;
+          else return 0;
+        });
   },
 });
 

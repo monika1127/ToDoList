@@ -3,18 +3,14 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { filteredToDoList } from "../recoil/recoil";
 import ToDoItem from "./ToDoItem";
-import Statistics from "./Statistics";
+
 const ToDoList = () => {
   const toDoList = useRecoilValue(filteredToDoList);
 
   return (
-    <Container>
-      <Flex sx={{
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}>
+    <Container variant='body'>
+      <Flex>
         <Text variant="header">Tasks:</Text>
-        <Statistics />
       </Flex>
       {toDoList.map((toDoItem) => (
         <ToDoItem key={toDoItem.id} item={toDoItem} />

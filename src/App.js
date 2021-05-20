@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { todoListState } from "./recoil/recoil";
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import {ThemeProvider} from 'theme-ui'
-import theme from './theme'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Spinner, ThemeProvider } from "theme-ui";
+import theme from "./styles/theme";
 import Navbar from "./Components/Navbar";
 import ToDoList from "./Components/ToDoList";
 import AddToDoItem from "./Components/AddToDoItem";
 import SearchToDoItem from "./Components/SearchToDoItem";
-import BounceLoader from "react-spinners/BounceLoader"
 
+import Statistics from "./Components/Statistics";
 function App() {
   const [toDoList, setToDoList] = useRecoilState(todoListState);
   const [isLoading, setLoading] = useState(true);
@@ -27,15 +27,18 @@ function App() {
       });
   }, []);
 
+  if (isLoading)
+    return <Spinner sx={{ position: "absolute", top: "20%", left: "50vw" }} />;
   return (
     <ThemeProvider theme={theme}>
       <Router>
-      <Navbar />
+        <Navbar />
+        <Statistics />
         <Switch>
           <Route path="/search" component={SearchToDoItem} />
           <Route path="/add-todo" component={AddToDoItem} />
         </Switch>
-      {isLoading ? <BounceLoader /> : <ToDoList />}
+        <ToDoList />
       </Router>
     </ThemeProvider>
   );
