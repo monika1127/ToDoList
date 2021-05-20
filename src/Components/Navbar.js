@@ -21,7 +21,7 @@ const Navbar = () => {
       sx={{ justifyContent: "space-between", alignItems: "center" }}
     >
       <Text variant="nav" m={3}>
-        ToDos
+        {"ToDos"}
       </Text>
       <Flex>
         <Box sx={{ m: 2 }}>

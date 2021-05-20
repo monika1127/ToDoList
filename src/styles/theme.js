@@ -32,7 +32,13 @@ export default {
     danger: "#C95977",
     highlited: "#89c4d9",
   },
-
+  styles: {
+    root: {
+      fontFamily: 'body',
+      lineHeight: 'body',
+      fontWeight: 'body'
+    },
+  },
   cards,
   buttons,
   text,
